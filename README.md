@@ -14,3 +14,5 @@ Basic methods are implemented, such as inserting new nodes, popping/deleting nod
 # Merge sort algorithm
 
 # Selection sort algorithm
+
+# Binary search algorithm
