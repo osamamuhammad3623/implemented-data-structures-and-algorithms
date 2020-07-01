@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//Basic binary tree implementation with a varity of methods
+//Basic binary tree implementation with a varity of methods:
 
 struct Node {
 	int value{};
@@ -111,10 +111,10 @@ struct Binary_Tree {
 			}
 		}
 	}
-	
+
 	bool has_left_child(Node* root, int check_val) {
 
-		if (check_val == root->value) { return root->left != nullptr ; }
+		if (check_val == root->value) { return root->left != nullptr; }
 		else {
 
 			if (check_val < root->value) {
@@ -162,7 +162,31 @@ struct Binary_Tree {
 		}
 	}
 
+	void path_from_root(Node* root, int check_val) {
+		cout << root->value << " --> ";
+		if (check_val == root->value) {
+			cout << "(Found !)" << endl;
+		}
+		else {
+			if (check_val < root->value) {
+				if (root->left != nullptr) {
 
+					path_from_root(root->left, check_val);
+				}
+				else {
+					cout << "(Not found !)" << endl;
+				}
+			}
+			else if (check_val > root->value) {
+				if (root->right != nullptr) {
+					path_from_root(root->right, check_val);
+				}
+				else {
+					cout << "(Not found !)" << endl;
+				}
+			}
+		}
+	}
 };
 
 // testing the functions
@@ -185,13 +209,12 @@ int main() {
 	cout << b1.searchNode(&root_test, 31) << endl;
 	cout << b1.node_counter << endl;
 	b1.depth_first_view(&root_test);
-	
+
 	cout << b1.has_left_child(&root_test, 3) << endl;
-	cout << b1.has_right_child(&root_test, 3) << endl;
-	cout << b1.has_left_child(&root_test, 2) << endl;
 	cout << b1.has_right_child(&root_test, 2) << endl;
-	cout << b1.has_left_child(&root_test, 19) << endl;
-	cout << b1.has_right_child(&root_test, 19) << endl;
 	cout << b1.has_left_child(&root_test, 15) << endl;
 	cout << b1.has_right_child(&root_test, 15) << endl;
+	b1.path_from_root(&root_test, 15);
+	b1.path_from_root(&root_test, 5);
+
 }
