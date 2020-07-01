@@ -2,8 +2,7 @@
 
 using namespace std;
 
-
-//Basic binary tree implementation with a varity of methods:
+//Basic binary tree implementation with a varity of methods
 
 struct Node {
 	int value{};
