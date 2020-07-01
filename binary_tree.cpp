@@ -3,9 +3,7 @@
 using namespace std;
 
 
-//Basic binary tree implementation with a varity of methods:
-//inserting new nodes, finding max and min nodes
-//searching for a node and and showing all nodes in ascending order
+//Basic binary tree implementation with a varity of methods
 
 struct Node {
 	int value{};
@@ -113,6 +111,57 @@ struct Binary_Tree {
 			}
 		}
 	}
+	
+	bool has_left_child(Node* root, int check_val) {
+
+		if (check_val == root->value) { return root->left != nullptr ; }
+		else {
+
+			if (check_val < root->value) {
+
+				if (root->left != nullptr) {
+					has_left_child(root->left, check_val);
+				}
+				else {
+					return 0;
+				}
+			}
+			else if (check_val > root->value) {
+				if (root->right != nullptr) {
+					has_left_child(root->right, check_val);
+				}
+				else {
+					return 0;
+				}
+			}
+		}
+	}
+
+	bool has_right_child(Node* root, int check_val) {
+
+		if (check_val == root->value) { return root->right != nullptr; }
+		else {
+
+			if (check_val < root->value) {
+
+				if (root->left != nullptr) {
+					has_right_child(root->left, check_val);
+				}
+				else {
+					return 0;
+				}
+			}
+			else if (check_val > root->value) {
+				if (root->right != nullptr) {
+					has_right_child(root->right, check_val);
+				}
+				else {
+					return 0;
+				}
+			}
+		}
+	}
+
 
 };
 
@@ -123,11 +172,11 @@ int main() {
 	root_test.value = 7;
 
 	Binary_Tree b1;
-	b1.insertNode(&root_test, 2);
 	b1.insertNode(&root_test, 3);
+	b1.insertNode(&root_test, 2);
 	b1.insertNode(&root_test, 5);
-	b1.insertNode(&root_test, 10);
 	b1.insertNode(&root_test, 15);
+	b1.insertNode(&root_test, 10);
 	b1.insertNode(&root_test, 19);
 
 	cout << b1.maxNode(&root_test) << endl;
@@ -136,4 +185,13 @@ int main() {
 	cout << b1.searchNode(&root_test, 31) << endl;
 	cout << b1.node_counter << endl;
 	b1.depth_first_view(&root_test);
+	
+	cout << b1.has_left_child(&root_test, 3) << endl;
+	cout << b1.has_right_child(&root_test, 3) << endl;
+	cout << b1.has_left_child(&root_test, 2) << endl;
+	cout << b1.has_right_child(&root_test, 2) << endl;
+	cout << b1.has_left_child(&root_test, 19) << endl;
+	cout << b1.has_right_child(&root_test, 19) << endl;
+	cout << b1.has_left_child(&root_test, 15) << endl;
+	cout << b1.has_right_child(&root_test, 15) << endl;
 }
