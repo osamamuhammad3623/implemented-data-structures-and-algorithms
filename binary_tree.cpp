@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -93,24 +94,6 @@ struct Binary_Tree {
 	}*/
 	// this method can be used instead of node_counter member
 
-	void depth_first_view(Node* root) {
-		if (root == nullptr) {
-			cout << "There is no tree anyway" << endl;
-		}
-		else {
-
-			if (root->left != nullptr) {
-				depth_first_view(root->left);
-			}
-
-			cout << root->value << endl;
-
-			if (root->right != nullptr) {
-				depth_first_view(root->right);
-			}
-		}
-	}
-
 	bool has_left_child(Node* root, int check_val) {
 
 		if (check_val == root->value) { return root->left != nullptr; }
@@ -159,6 +142,45 @@ struct Binary_Tree {
 				}
 			}
 		}
+	}
+
+	void depth_first_view(Node* root) {
+		// in-order DFS 
+		if (root == nullptr) {
+			cout << "There is no tree anyway" << endl;
+		}
+		else {
+
+			if (root->left != nullptr) {
+				depth_first_view(root->left);
+			}
+
+			cout << root->value << endl;
+
+			if (root->right != nullptr) {
+				depth_first_view(root->right);
+			}
+		}
+	}
+	
+	void breadth_first_view(Node* root) {
+
+		queue <Node*> q;
+		q.push(root);
+
+		while ( ! q.empty()) {
+			
+			if (has_left_child( q.front(), q.front()->value) == 1) {
+				q.push( q.front()->left );
+			}
+			if (has_right_child(q.front(), q.front()->value) == 1) {
+				q.push(q.front()->right);
+			}
+
+			cout << q.front()->value << endl;
+			q.pop();
+		}
+
 	}
 
 	void path_from_root(Node* root, int check_val) {
@@ -216,4 +238,5 @@ int main() {
 	b1.path_from_root(&root_test, 15);
 	b1.path_from_root(&root_test, 5);
 
+	b1.breadth_first_view(&root_test);
 }
