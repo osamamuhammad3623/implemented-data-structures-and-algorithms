@@ -16,3 +16,5 @@ Basic methods are implemented, such as inserting new nodes, popping/deleting nod
 # Selection sort algorithm
 
 # Binary search algorithm
+
+# String Match (Brute Force)
