@@ -7,11 +7,11 @@ one person.) The cost that would accure if the i-th person is assigned to the j-
 is a known quantity C[i, j ] for each pair i, j = 1, 2, . . . , n. The problem is to find
 an assignment with the minimum total cost. For instance:
 
-	job1	job2	job3	job4
-p1  9		2		7		8
-p2  6		4		3		7
-p3  5		8		1		8
-p4  7		6		9		4
+	job1		job2		job3		job4
+p1  	9		2		7		8
+p2  	6		4		3		7
+p3  	5		8		1		8
+p4  	7		6		9		4
 
 */
 
