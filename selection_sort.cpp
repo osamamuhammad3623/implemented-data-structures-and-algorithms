@@ -5,14 +5,14 @@ void selection_sort(int arr[], int length) {
 
 	for (int i = 0; i < length; i++) {
 
-		int index_of_min = i;
+		int current_minimum = i;
 		for (int j = i; j < length; j++) {
 
-			if (arr[j] < arr[index_of_min]) {
-				index_of_min = j;
+			if (arr[j] < arr[current_minimum]) {
+				current_minimum = j;
 			}
 		}
-		swap(arr[index_of_min], arr[i]);
+		swap(arr[current_minimum], arr[i]);
 	}
 }
 
