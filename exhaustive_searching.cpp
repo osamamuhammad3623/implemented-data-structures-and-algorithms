@@ -21,9 +21,9 @@ p4  	7		6		9		4
 using namespace std;
 
 short least_job(vector <short> costs) {
-	short smallest_cost{1000}, job_number = 1; // 1000 represent infinite
+	short smallest_cost = costs[0], job_number = 1;
 
-	for (short i=0; i < 4; i++) {
+	for (short i = 0; i < costs.size(); i++) {
 		if (costs[i] < smallest_cost) {
 			smallest_cost = costs[i];
 			job_number = i;
@@ -34,11 +34,11 @@ short least_job(vector <short> costs) {
 }
 
 // function to get the second least job
-short least_job(vector <short> costs, short the_least) {
-	short smallest_cost{1000}, job_number = 1;
+short second_least_job(vector <short> costs, short the_least) {
+	short smallest_cost = costs[0], job_number = 1;
 
-	for (short i = 0; i < 4; i++) {
-		if (costs[i] < smallest_cost && (i+1) != the_least) {
+	for (short i = 0; i < costs.size(); i++) {
+		if (costs[i] < smallest_cost && (i + 1) != the_least) {
 			smallest_cost = costs[i];
 			job_number = i;
 		}
@@ -47,9 +47,8 @@ short least_job(vector <short> costs, short the_least) {
 	return (job_number + 1);
 }
 
-
 bool is_contain(vector <short> costs, short cost) {
-	for (short i = 0; i < 4; i++) {
+	for (short i = 0; i < costs.size(); i++) {
 		if (costs[i] == cost) {
 			return true;
 		}
@@ -59,22 +58,25 @@ bool is_contain(vector <short> costs, short cost) {
 
 int main() {
 
-	vector < vector <short>> cost_matrix(4, vector<short>(4));
-	for (short i = 0; i < 4; i++) {
-		for (short j = 0; j < 4; j++) {
+	int n; cout << "How many jobs you have :"; cin >> n;
+
+	cout << "Enter the cost matrix (nxn):" << endl;
+	vector < vector <short>> cost_matrix(4, vector<short>(n));
+	for (short i = 0; i < n; i++) {
+		for (short j = 0; j < n; j++) {
 			cin >> cost_matrix[i][j];
 		}
 	}
 
 	// a container to store the taken jobs
-	vector <short> taken_jobs(4);
+	vector <short> taken_jobs(n);
 
-	for (short itr = 0; itr < 4; itr++) {
+	for (short itr = 0; itr < n; itr++) {
 		short job_number = least_job(cost_matrix[itr]);
 
 		// if the job is taken before --> get the 2nd least job
 		if (is_contain(taken_jobs, job_number) == 1) {
-			job_number = least_job(cost_matrix[itr], job_number) ;
+			job_number = second_least_job(cost_matrix[itr], job_number);
 			taken_jobs[itr] = job_number;
 		}
 		else {
@@ -82,8 +84,7 @@ int main() {
 		}
 	}
 
-	for (short i = 0; i < 4; i++) {
+	for (short i = 0; i < n; i++) {
 		cout << "Person " << i + 1 << " takes job " << taken_jobs[i] << endl;
 	}
 }
-
