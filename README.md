@@ -11,6 +11,8 @@ Basic methods are implemented, such as inserting new nodes in the beginning of t
 # Stack implementation:
 Basic methods are implemented, such as inserting new nodes, popping/deleting nodes, searching for a node if it exists, checking if the list is empty or not, and showing all elements.
 
+# Circular Queue implementations.
+
 # Merge sort algorithm
 
 # Selection sort algorithm
