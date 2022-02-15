@@ -5,18 +5,20 @@ using namespace std;
 
 void dfs(vector<vector<int>> g, int start){
     cout << start << " ";
-    start--;
+    start--; // for 0-based indexing
     stack<int> st;
-    vector<bool> visited(g.size()+1, 0);
+    vector<bool> visited(g.size()+1, 0); // mark all nodes as unvisited
 
-    visited[start] = 1;
+    visited[start] = 1; // mark starting node as visited
+	
+    // add neighours to the stack
     for (auto neighbour: g[start]){
         st.push(neighbour);
     }
 
     while(!st.empty()){
         int current = st.top();
-        current--;
+        current--; // // for 0-based indexing
         if (visited[current]){
             st.pop();
         }else{
