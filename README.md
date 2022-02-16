@@ -26,3 +26,5 @@ Basic methods are implemented, such as inserting new nodes, popping/deleting nod
 # Exhaustive searching algorithm
 
 # Depth-First-Search algorithm
+
+# Breadth-First-Search algorithm
